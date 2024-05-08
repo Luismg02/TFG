@@ -1,7 +1,7 @@
 # TFG
 Este repositorio contiene todos los archivos mencionados en la memoria del TFG
 
-#MÁQUINAS VIRTUALES
+# MÁQUINAS VIRTUALES
 
 Para facilitar la tarea de recreación de bugs tanto a nivel del espacio de usuario como del kernel de Linux, se pueden encontrar las tres máquinas virtuales usadas dentro de la carpeta MaquinasVirtuales. En dicha carpeta, se hallan todos los archivos necesarios para que el usuario interesado pueda usar la máquina virtual para recrear los bugs directamente desde allí. Para llevar a cabo la instalación de la máquina virtual en virtualbox, se pueden seguir los siguientes pasos:
 1. Clic sobre Nueva.
@@ -15,7 +15,7 @@ Para facilitar la tarea de recreación de bugs tanto a nivel del espacio de usua
 9. Pulsamos en Siguiente.
 10. Pulsamos en Terminar.
 
-#HERRAMIENTA DE ASAN
+# HERRAMIENTA DE ASAN
 
 Dentro de este repositorio, se puede encontrar la carpeta ASan donde se hallan todos los archivos mencionados en la memoria del TFG que han sido usados para la recreación de bugs en el espacio de usuario. Para llevar a cabo la identificación de bugs por parte de ASan, es necesario seguir los siguientes pasos:
  1. Creación de un archivo .c con el código a compilar (en este caso los archivos se encuentran ya creados en la carpeta ASan).
@@ -31,7 +31,7 @@ Respecto al uso del primer comando para realizar la compilación, esta es una ex
 6. archivo_sin_compilar.c: Es el archivo fuente que se compilará. Debe estar presente en el directorio actual o especificar la ruta completa al archivo.
 7.-o archivo_compilado: Esta opción especifica el nombre del archivo de salida. En este caso, el binario resultante se llamará “archivo compilado”.
 
-#HERRAMIENTA DE KASAN
+# HERRAMIENTA DE KASAN
 
 Dentro de este repositorio, se puede encontrar la carpeta KASAN donde se hallan todos los módulos mencionados en la memoria del TFG que han sido insertados en el kernel de Linux para la recreación de bugs en el espacio del kernel. Si el usuario no hace uso de la máquina proporcionada en la carpeta de MaquinasVirtuales (KASAN), deberá de seguir los siguientes pasos para su activación:
 1. Descargar el código fuente de Linux: usamos el comando git clone https://github.com/torvalds/linux.git.
@@ -60,15 +60,15 @@ Una vez ejecutado los tres comandos anteriores ya podemos iniciar la máquina vi
 
 Finalmente, cabe destacar que en la máquina virtual KASAN_INLINE se puede encontrar activada la configuración de KASAN pero con la opción inline en vez de outline como la máquina anterior. Esta configuración hace que el compilador inserte directamente comprobaciones de accesibilidad de memoria antes de cada acceso a la memoria.Es más rápido que KASAN_OUTLINE(da x2 de impulso para algunas cargas de trabajo),pero hace que el tamaño .text del kernel sea mucho mayor.
 
-#WEB SCRAPING
+# WEB SCRAPING
 
 En la carpeta WebScraping se puede encontrar el código python utilizado.
 
-#BASE DE DATOS
+# BASE DE DATOS
 
 En la carpeta BasedeDatos se puede encontrar la base de datos.
 
-#FRONTEND
+# FRONTEND
 
 En la carpeta Frontend está disponible todo el código utilizado en la implementación de dicho frontend a través de la tecnología de Django. Cabe mencionar, los pasos a seguir para hacer funcionar la aplicación web en local:
 
