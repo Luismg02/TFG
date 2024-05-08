@@ -1,0 +1,1 @@
+savedcmd_/home/usuario/Escritorio/linux/modulos_KASAN/double_free/modules.order := {   echo /home/usuario/Escritorio/linux/modulos_KASAN/double_free/double_free.o; :; } > /home/usuario/Escritorio/linux/modulos_KASAN/double_free/modules.order

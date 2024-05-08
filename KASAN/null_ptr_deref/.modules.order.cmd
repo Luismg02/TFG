@@ -1,0 +1,1 @@
+savedcmd_/home/usuario/Escritorio/linux/modulos_KASAN/null_ptr_deref/modules.order := {   echo /home/usuario/Escritorio/linux/modulos_KASAN/null_ptr_deref/null_ptr_deref.o; :; } > /home/usuario/Escritorio/linux/modulos_KASAN/null_ptr_deref/modules.order

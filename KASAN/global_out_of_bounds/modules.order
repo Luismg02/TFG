@@ -1,0 +1,1 @@
+/home/usuario/Escritorio/linux/modulos_KASAN/global_out_of_bounds/global_out_of_bounds.o

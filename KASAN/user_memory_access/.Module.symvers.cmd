@@ -1,0 +1,1 @@
+savedcmd_/home/usuario/Escritorio/linux/modulos_KASAN/user_memory_access/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/usuario/Escritorio/linux/modulos_KASAN/user_memory_access/Module.symvers -T /home/usuario/Escritorio/linux/modulos_KASAN/user_memory_access/modules.order -i Module.symvers -e 

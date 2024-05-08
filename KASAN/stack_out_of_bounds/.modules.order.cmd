@@ -1,0 +1,1 @@
+savedcmd_/home/usuario/Escritorio/linux/modulos_KASAN/stack_out_of_bounds/modules.order := {   echo /home/usuario/Escritorio/linux/modulos_KASAN/stack_out_of_bounds/stack_out_of_bounds.o; :; } > /home/usuario/Escritorio/linux/modulos_KASAN/stack_out_of_bounds/modules.order

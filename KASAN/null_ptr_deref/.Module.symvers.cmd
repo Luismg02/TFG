@@ -1,0 +1,1 @@
+savedcmd_/home/usuario/Escritorio/linux/modulos_KASAN/null_ptr_deref/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/usuario/Escritorio/linux/modulos_KASAN/null_ptr_deref/Module.symvers -T /home/usuario/Escritorio/linux/modulos_KASAN/null_ptr_deref/modules.order -i Module.symvers -e 

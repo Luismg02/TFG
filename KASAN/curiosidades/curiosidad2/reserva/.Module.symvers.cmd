@@ -1,0 +1,1 @@
+savedcmd_/home/usuario/Escritorio/linux/modulos_KASAN/curiosidades/curiosidad2/reserva/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/usuario/Escritorio/linux/modulos_KASAN/curiosidades/curiosidad2/reserva/Module.symvers -T /home/usuario/Escritorio/linux/modulos_KASAN/curiosidades/curiosidad2/reserva/modules.order -i Module.symvers -e 

@@ -1,0 +1,1 @@
+savedcmd_/home/usuario/Escritorio/linux/modulos_KASAN/out_of_bounds/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/usuario/Escritorio/linux/modulos_KASAN/out_of_bounds/Module.symvers -T /home/usuario/Escritorio/linux/modulos_KASAN/out_of_bounds/modules.order -i Module.symvers -e 

@@ -1,0 +1,1 @@
+savedcmd_/home/usuario/Escritorio/linux/modulos_KASAN/curiosidades/modules.order := {   echo /home/usuario/Escritorio/linux/modulos_KASAN/curiosidades/user_memory_access.o; :; } > /home/usuario/Escritorio/linux/modulos_KASAN/curiosidades/modules.order
