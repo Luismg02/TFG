@@ -59,7 +59,7 @@ Dentro de este repositorio, se puede encontrar la carpeta KASAN donde se hallan 
 
 
     • Nuevo Fallo De Certificados: fallo en las claves de revocación. Es necesario comentar las líneas en las que aparezca CONFIG_SYSTEM_REVOCATION_KEYS para solventar el problema.  
-    
+
 
 Para finalizar debemos de seguir los siguientes pasos:
 1. Comando make para compilar el kernel dentro de la carpeta de Linux que habíamos clonado.
@@ -68,12 +68,12 @@ Para finalizar debemos de seguir los siguientes pasos:
 
 Una vez ejecutado los tres comandos anteriores ya podemos iniciar la máquina virtual con la imagen de arranque que tiene KASAN habilitado. Una vez hecho esto, podemos comprobar que está configurado KASAN ejecutando el siguiente comando: grep CONFIG_KASAN /boot/config-$(uname-r). Si nos aparece CONFIG_KASAN=y significa que está configurado. Los pasos para recrear los respectivos bugs son los siguientes (los pasos 1,2 y 3 no son necesarios ya que se encuentran en la carpeta KASAN):
 1. Crear un archivo que pueda ser pasado a la extensión .ko (extensión que hace referencia a un módulo del kernel de Linux), para ello creamos un archivo escrito en el lenguaje de programación C.
-2. Creaciónn del archivo Makefile(archivo de texto que describe larelación entre los archivos fuente del programa y los encabezados que se compilarán)que me genera la extensión .ko.
+2. Creación del archivo Makefile(archivo de texto que describe la relación entre los archivos fuente del programa y los encabezados que se compilarán) que genera la extensión .ko.
 3. Ejecutamos el comando make donde se encuentra el archivo Makefile creado en el paso anterior y se nos generan diversos archivos.
 4. Insertamos el módulo con el comando insmod nombre.ko.
 5. Ejecución del comando dmesg para visualizar el log de KASAN.
 
-Finalmente, cabe destacar que en la máquina virtual KASAN_INLINE se puede encontrar activada la configuración de KASAN pero con la opción inline en vez de outline como la máquina anterior. Esta configuración hace que el compilador inserte directamente comprobaciones de accesibilidad de memoria antes de cada acceso a la memoria.Es más rápido que KASAN_OUTLINE(da x2 de impulso para algunas cargas de trabajo),pero hace que el tamaño .text del kernel sea mucho mayor.
+Finalmente, cabe destacar que en la máquina virtual KASAN_INLINE se puede encontrar activada la configuración de KASAN pero con la opción inline en vez de outline como la máquina anterior. Esta configuración hace que el compilador inserte directamente comprobaciones de accesibilidad de memoria antes de cada acceso a la memoria. Es más rápido que KASAN_OUTLINE(da x2 de impulso para algunas cargas de trabajo),pero hace que el tamaño .text del kernel sea mucho mayor.
 
 # WEB SCRAPING
 
@@ -93,4 +93,4 @@ En la carpeta Frontend está disponible todo el código utilizado en la implemen
 campo Name por la ruta directa a la base de datos.
 4. Finalmente, ejecutamos el servidor de desarrollo con el comando python manage.py runserver.
 
-Es importante destacar que si se hace alguna modificación será necesario aplicar las migraciones con los dos comandos siguientes: python manage.py makemigrations y python manage.py migrate. Además, si queremos realizar consultas a la base de datos debmos de descargarnos sqlite3 desde su página web, descomprimirlo y mover el archivo sqlite3.exe a la ruta raíz del proyecto.
+Es importante destacar que si se hace alguna modificación será necesario aplicar las migraciones con los dos comandos siguientes: python manage.py makemigrations y python manage.py migrate. Además, si queremos realizar consultas a la base de datos debmos de descargarnos sqlite3 desde su página web, descomprimirlo y mover el archivo sqlite3.exe a la ruta raíz del proyecto. Una vez recolocado el archivo, las consultas se pueden realizar gracias al comando python manage.py dbshell.
