@@ -1,5 +1,5 @@
 # TFG
-Este repositorio contiene todos los archivos mencionados en la memoria del TFG
+Este repositorio contiene todos los archivos mencionados en la memoria del TFG.
 
 # MÁQUINAS VIRTUALES
 
@@ -20,7 +20,7 @@ Para facilitar la tarea de recreación de bugs tanto a nivel del espacio de usua
 Dentro de este repositorio, se puede encontrar la carpeta ASan donde se hallan todos los archivos mencionados en la memoria del TFG que han sido usados para la recreación de bugs en el espacio de usuario. Para llevar a cabo la identificación de bugs por parte de ASan, es necesario seguir los siguientes pasos:
  1. Creación de un archivo .c con el código a compilar (en este caso los archivos se encuentran ya creados en la carpeta ASan).
  2. Ejecutar el comando sudo gcc -fsanitize=address -O1 -g archivo_sin_compilar.c -o archivo_compilado.c
- 3. Ejecución del comando ./archivo compilado.
+ 3. Ejecución del comando ./archivo_compilado.
 
 Respecto al uso del primer comando en el segundo paso para realizar la compilación, esta es una explicación de cada una de las opciones usadas:
 1. sudo: esta palabra clave se utiliza para ejecutar el comando como superusuario o administrador. Esto es necesario si el usuario no tiene permisos suficientes para realizar la operación.
@@ -33,13 +33,21 @@ Respecto al uso del primer comando en el segundo paso para realizar la compilaci
 
 # HERRAMIENTA DE KASAN
 
-Dentro de este repositorio, se puede encontrar la carpeta KASAN donde se hallan todos los módulos mencionados en la memoria del TFG que han sido insertados en el kernel de Linux para la recreación de bugs en el espacio del kernel. Si el usuario no hace uso de la máquina proporcionada en la carpeta de MaquinasVirtuales (KASAN), deberá de seguir los siguientes pasos para su activación:
+Dentro de este repositorio, se puede encontrar la carpeta KASAN donde se hallan todos los módulos mencionados en la memoria del TFG que han sido insertados en el kernel de Linux para la recreación de bugs en el espacio del kernel. Si el usuario no solicita las máquinas virtuales al autor, deberá de seguir los siguientes pasos para su la activación de KASAN:
 1. Descargar el código fuente de Linux: usamos el comando git clone https://github.com/torvalds/linux.git.
 2. Instalar las herramientas de desarrollo: usaremos herramientas de desarrollo como gcc,make, libncurses-dev, flex y bison. Para llevar a cabo la instalación hacemos uso del comando sudo apt-get install gcc make libncurses-dev flex bison.
-3. Configuración del kernel: Nos debemos situar donde se encuentra el código fuente del kernel de Linux que descargamos en el primer paso. Para abrir la interfaz de configuración debemos de usar el comando make menuconfig. Hemos habilitado las siguientes configuraciones haciendo uso de de la búsqueda /:
-    • CONFIG KASAN: dicha opción la habilitamos siguiendo realizando los siguientes pasos: Kernel Hacking -> Memory Debugging -> Lo Activamos pulsando la barra espaciadora -> Accedemos pulsando la tecla Enter -> Activamos pulsando la barra espaciadora la opción Generic. Gracias a esta configuración ya tenemos activado KASAN en modo genérico.
-    • CONFIG KASAN OUTLINE: dicha opción la habilitamos siguiendo los siguientes pasos: KASAN -> Instrumentation type. Gracias a esta configuración ya tenemos habilitado el seguimiento de pila para KASAN.
-    • CONFIG DEBUG INFO: dicha opción no debe estar habilitada, para comprobarlo debemos de seguir los siguientes pasos: Kernel Hacking -> Compile-time -> Debug Information -> Disable Debug Information. Al no estar marcada dicha opción tenemos habilitada la información de depuración.
+3. Configuración del kernel: Nos debemos situar donde se encuentra el código fuente del kernel de Linux que descargamos en el primer paso. Para abrir la interfaz de configuración debemos de usar el comando make menuconfig. Hemos habilitado las siguientes configuraciones haciendo uso de de la búsqueda /:  
+
+
+    • CONFIG KASAN: dicha opción la habilitamos siguiendo realizando los siguientes pasos: Kernel Hacking -> Memory Debugging -> Lo Activamos pulsando la barra espaciadora -> Accedemos pulsando la tecla Enter -> Activamos pulsando la barra espaciadora la opción Generic. Gracias a esta configuración ya tenemos activado KASAN en modo genérico.  
+
+
+    • CONFIG KASAN OUTLINE: dicha opción la habilitamos siguiendo los siguientes pasos: KASAN -> Instrumentation type. Gracias a esta configuración ya tenemos habilitado el seguimiento de pila para KASAN.  
+
+
+    • CONFIG DEBUG INFO: dicha opción no debe estar habilitada, para comprobarlo debemos de seguir los siguientes pasos: Kernel Hacking -> Compile-time -> Debug Information -> Disable Debug Information. Al no estar marcada dicha opción tenemos habilitada la información de depuración.  
+
+    
 4. Compilar el kernel con las nuevas características: Para llevar a cabo todo el proceso de compilación debemos de ejecutar el comando make en la carpeta donde tenemos el código fuente del kernel de linux. A medida que se va compilando el kernel se sufrirá varias interrupciones debido a la necesidad de tener instalados una serie de paquetes. Los paquetes que han sido necesarios instalar para poder realizar el proceso de compilación han sido los siguientes: libssl-dev, libelf-dev, dkms,libudev-dev, libpci-dev, libiberty-dev y autoconf. Habrá que tratar con nuevos errores y seguir los siguientes pasos para llegar a la solución:
     • Tamaño de Stack: Debemos de cambiar el tamaño de stack para que pueda compilar dentro de FRAME WARN. Para ello, establecemos un nuevo tamaño de 2048 bytes cambiando su antiguo valor de 1024 bytes. Dicha opción, la podemos encontrar en la siguiente ruta: Kernel Hacking -> Compile Time -> Warn for stacks frames.
     • Fallo Certificados: fallo en las claves de confianza. Para solventar este error se tiene que comentar las líneas donde apareciera CONFIG_SYSTEM_TRUSTED_KEYS
