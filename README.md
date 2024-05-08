@@ -48,11 +48,18 @@ Dentro de este repositorio, se puede encontrar la carpeta KASAN donde se hallan 
     • CONFIG DEBUG INFO: dicha opción no debe estar habilitada, para comprobarlo debemos de seguir los siguientes pasos: Kernel Hacking -> Compile-time -> Debug Information -> Disable Debug Information. Al no estar marcada dicha opción tenemos habilitada la información de depuración.  
 
     
-4. Compilar el kernel con las nuevas características: Para llevar a cabo todo el proceso de compilación debemos de ejecutar el comando make en la carpeta donde tenemos el código fuente del kernel de linux. A medida que se va compilando el kernel se sufrirá varias interrupciones debido a la necesidad de tener instalados una serie de paquetes. Los paquetes que han sido necesarios instalar para poder realizar el proceso de compilación han sido los siguientes: libssl-dev, libelf-dev, dkms,libudev-dev, libpci-dev, libiberty-dev y autoconf. Habrá que tratar con nuevos errores y seguir los siguientes pasos para llegar a la solución:
-    • Tamaño de Stack: Debemos de cambiar el tamaño de stack para que pueda compilar dentro de FRAME WARN. Para ello, establecemos un nuevo tamaño de 2048 bytes cambiando su antiguo valor de 1024 bytes. Dicha opción, la podemos encontrar en la siguiente ruta: Kernel Hacking -> Compile Time -> Warn for stacks frames.
+4. Compilar el kernel con las nuevas características: Para llevar a cabo todo el proceso de compilación debemos de ejecutar el comando make en la carpeta donde tenemos el código fuente del kernel de linux. A medida que se va compilando el kernel se sufrirá varias interrupciones debido a la necesidad de tener instalados una serie de paquetes. Los paquetes que han sido necesarios instalar para poder realizar el proceso de compilación han sido los siguientes: libssl-dev, libelf-dev, dkms,libudev-dev, libpci-dev, libiberty-dev y autoconf. Habrá que tratar con nuevos errores y seguir los siguientes pasos para llegar a la solución:  
+
+
+    • Tamaño de Stack: Debemos de cambiar el tamaño de stack para que pueda compilar dentro de FRAME WARN. Para ello, establecemos un nuevo tamaño de 2048 bytes cambiando su antiguo valor de 1024 bytes. Dicha opción, la podemos encontrar en la siguiente ruta: Kernel Hacking -> Compile Time -> Warn for stacks frames.  
+
+
     • Fallo Certificados: fallo en las claves de confianza. Para solventar este error se tiene que comentar las líneas donde apareciera CONFIG_SYSTEM_TRUSTED_KEYS
-    dentro del .config.
-    • Nuevo Fallo De Certificados: fallo en las claves de revocación. Es necesario comentar las líneas en las que aparezca CONFIG_SYSTEM_REVOCATION_KEYS para solventar el problema.
+    dentro del .config.  
+
+
+    • Nuevo Fallo De Certificados: fallo en las claves de revocación. Es necesario comentar las líneas en las que aparezca CONFIG_SYSTEM_REVOCATION_KEYS para solventar el problema.  
+    
 
 Para finalizar debemos de seguir los siguientes pasos:
 1. Comando make para compilar el kernel dentro de la carpeta de Linux que habíamos clonado.
