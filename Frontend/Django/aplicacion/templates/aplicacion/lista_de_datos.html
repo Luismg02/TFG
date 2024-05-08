@@ -1,0 +1,112 @@
+<!-- lista_de_datos.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Bugs</title>
+
+    <!-- Biblioteca jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Biblioteca DataTables desde CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td:nth-child(3) {
+            max-width: 150px;
+            word-wrap: break-word;
+        }
+
+        td {
+            max-height: 50px;
+            overflow: auto;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        /* Oculto el componente de búsqueda */
+        div.dataTables_wrapper div.dataTables_filter {
+            display: none;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $('#miTabla').DataTable();
+        });
+    </script>
+</head>
+<body>
+    <h1>Lista de Bugs</h1>
+
+    <table id="miTabla" class="display">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>CVE</th>
+                <th>Commit Mensaje</th>
+                <th>Adjuntos</th>
+                <th>Hardware</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for dato in datos %}
+                <tr>
+                    <td>{{ dato.tipo }}</td>
+                    <td>{{ dato.cve }}</td>
+                    <td><a href="{% url 'descargar_commit' cve=dato.cve %}" download>Descripción</a></td>
+                    <td>
+                        {% for adjunto in dato.adjuntos %}
+                            <a href="{{ adjunto }}" target="_blank">{{ adjunto }}</a><br>
+                        {% endfor %}
+                    </td>
+                    <td>{{ dato.hardware }}</td>
+                    <td><a href="{{ dato.url }}" target="_blank">{{ dato.url }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
