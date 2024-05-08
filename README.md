@@ -3,7 +3,7 @@ Este repositorio contiene todos los archivos mencionados en la memoria del TFG
 
 # MÁQUINAS VIRTUALES
 
-Para facilitar la tarea de recreación de bugs tanto a nivel del espacio de usuario como del kernel de Linux, se pueden encontrar las tres máquinas virtuales usadas dentro de la carpeta MaquinasVirtuales. En dicha carpeta, se hallan todos los archivos necesarios para que el usuario interesado pueda usar la máquina virtual para recrear los bugs directamente desde allí. Para llevar a cabo la instalación de la máquina virtual en virtualbox, se pueden seguir los siguientes pasos:
+Para facilitar la tarea de recreación de bugs tanto a nivel del espacio de usuario como del kernel de Linux, se pueden solicitar las diferentes máquinas virtuales al autor del repositorio debido a que no es posible su subida a Github. Dentro de la carpeta MaquinasVirtuales, se hallan los archivos de configuración usados por Oracle VM VirtualBox. Para llevar a cabo la creación de una máquina virtual en virtualbox, se pueden seguir los siguientes pasos:
 1. Clic sobre Nueva.
 2. Rellenamos el campo Nombre y seleccionamos la imagen ISO correspondiente.
 3. Pulsamos en Siguiente.
@@ -11,7 +11,7 @@ Para facilitar la tarea de recreación de bugs tanto a nivel del espacio de usua
 5. Pulsamos en Siguiente.
 6. Asignamos 4096 MB de memoria RAM y 2 CPUs.
 7. Pulsamos en Siguiente.
-8. Asignamos un tamaño de disco de 25 GB.
+8. Asignamos un tamaño de disco de 25 GB (para la creación de la máquina virtual de KASAN será necesario al menos 80GB).
 9. Pulsamos en Siguiente.
 10. Pulsamos en Terminar.
 
@@ -22,14 +22,14 @@ Dentro de este repositorio, se puede encontrar la carpeta ASan donde se hallan t
  2. Ejecutar el comando sudo gcc -fsanitize=address -O1 -g archivo_sin_compilar.c -o archivo_compilado.c
  3. Ejecución del comando ./archivo compilado.
 
-Respecto al uso del primer comando para realizar la compilación, esta es una explicación de cada una de las opciones usadas:
+Respecto al uso del primer comando en el segundo paso para realizar la compilación, esta es una explicación de cada una de las opciones usadas:
 1. sudo: esta palabra clave se utiliza para ejecutar el comando como superusuario o administrador. Esto es necesario si el usuario no tiene permisos suficientes para realizar la operación.
 2. gcc: Es el compilador de GNU para el lenguaje de programación C. Se utiliza para traducir el código fuente escrito en C a código de máquina ejecutable. Este es el lenguaje de programación usado en cada uno de los tests.
 3. -fsanitize=address: Esta opción habilita el AddressSanitizer (ASan), como ya hemos comentado nos permitirá detectar errores de memoria en tiempo de ejecución. Al compilar con esta opción, el binario resultante incluirá instrumentación para verificar la memoria durante la ejecución.
 4. -O1: Esta opción especifica el nivel de optimización. En este caso, se utiliza el nivel 1 de optimización. Esto significa que el compilador aplicará optimizaciones básicas para mejorar el rendimiento del código sin sacrificar la legibilidad.
 5. -g: Esta opción incluye información de depuración en el binario generado. La información de depuración permite rastrear errores y depurar el programa más fácilmente.
 6. archivo_sin_compilar.c: Es el archivo fuente que se compilará. Debe estar presente en el directorio actual o especificar la ruta completa al archivo.
-7.-o archivo_compilado: Esta opción especifica el nombre del archivo de salida. En este caso, el binario resultante se llamará “archivo compilado”.
+7. -o archivo_compilado: Esta opción especifica el nombre del archivo de salida. En este caso, el binario resultante se llamará “archivo compilado”.
 
 # HERRAMIENTA DE KASAN
 
